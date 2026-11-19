@@ -36,6 +36,20 @@ test("thirty days cover four weeks and known skills", () => {
   }
 });
 
+test("hands-on cloud is Azure and the pipeline is Jenkins", () => {
+  const cloud = skills.find((skill) => skill.id === "cloud");
+  const cicd = skills.find((skill) => skill.id === "cicd");
+  const handsOn = (skill) => skill.resources.filter((item) => item.mode === "亲手做").map((item) => item.name);
+  assert.ok(handsOn(cloud).every((name) => name.includes("Azure") || name.includes("描述云概念")));
+  assert.equal(handsOn(cicd).join(" "), "Jenkins Pipeline 入门");
+  assert.match(cloud.practice, /Microsoft Learn/);
+  assert.doesNotMatch(cloud.practice, /AWS 官方/);
+  assert.match(cicd.practice, /Jenkinsfile/);
+  assert.doesNotMatch(cicd.practice, /GitHub Actions/);
+  assert.match(days.find((day) => day.n === 22).steps[0], /Jenkins/);
+  assert.match(days.find((day) => day.n === 12).steps[0], /Azure/);
+});
+
 test("quiz and glossary stay internally consistent", () => {
   assert.equal(quiz.length, 6);
   assert.equal(outcomes.length, 8);

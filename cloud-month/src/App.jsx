@@ -84,8 +84,8 @@ function Home({ progress, toggleOutcome, nextDay }) {
         <h1>只学能带来八成效果的那两成。</h1>
         <p className="lede">
           招聘启事把云、Terraform、Kubernetes、流水线、监控和脚本都写成了专家经验。
-          这个月不追这个范围。九项能力各留 5 份最值得的资料，要点已经写在页面上。
-          每项亲手做其中标明的部分，其余用来对照。
+          这个月不追这个范围，动手只用 Azure，流水线只用 Jenkins。
+          九项能力各留 5 份最值得的资料，要点已经写在页面上。标明亲手做的跟着做，其余用来对照。
         </p>
         <div className="hero-row">
           <a className="button" href={`#/day/${nextDay.n}`}>
@@ -266,14 +266,14 @@ function NameTable() {
   return (
     <section>
       <h2>同一件事在三朵云上的名字</h2>
-      <p className="note">本月只在 AWS 上动手。这张表用来读 Azure 和 Google Cloud 的文档。</p>
+      <p className="note">本月只在 Azure 上动手。这张表用来读 AWS 和 Google Cloud 的文档。</p>
       <div className="table-wrap">
         <table>
           <thead>
             <tr>
               <th>概念</th>
-              <th>AWS</th>
               <th>Azure</th>
+              <th>AWS</th>
               <th>Google Cloud</th>
             </tr>
           </thead>
@@ -281,8 +281,8 @@ function NameTable() {
             {names.map((row) => (
               <tr key={row.concept}>
                 <th>{row.concept}</th>
-                <td>{row.aws}</td>
                 <td>{row.azure}</td>
+                <td>{row.aws}</td>
                 <td>{row.gcp}</td>
               </tr>
             ))}
